@@ -7,7 +7,7 @@ let debtToIncomeRatio : number  = 35.0;
 if (creditScore >= 750) {
   console.log(`${customerName} loan is automatically approved`);
    }
-else if (creditScore >= 650 && creditScore <= 750){
+else if ( 650 <= creditScore <= 750){
 
       
       if (income >= 50000){
