@@ -1,34 +1,34 @@
 
 //const  hikePercentage  = hikeCalculation(baseSalary, experience, rating);
 
-let num : number = 35;
+
 
 
 
 function primeNumber(n: number): boolean {
 
-    if (num = 1){
 
-     return true;
-
-}
-
-for (let i = 2; i < n; i++) {
+        
+    for (let i = 2; i < n; i++) {
    
-    if (n%i===0) {
+    while (n%i===0) {
 
     return false;
 
-    }
+     }
+
+   }
 
     return true;
-}
+    
+
+    }
  
-}
 
 
+let num : number = 11;
 
-if  (primeNumber(num)){
+if  (primeNumber(num)=== true){
 
     console.log(`${num} is a prime number`);
 
