@@ -1,5 +1,5 @@
 
-//const  hikePercentage  = hikeCalculation(baseSalary, experience, rating);
+
 
 
 
