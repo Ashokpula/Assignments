@@ -63,6 +63,6 @@ for (const key of employeeData.keys()) {
   
 }
 
-console.log("Hike Percentage for each employee:");
+
 console.log(hikeMap);
 
