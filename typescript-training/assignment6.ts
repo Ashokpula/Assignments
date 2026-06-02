@@ -6,11 +6,6 @@
 
 
 function primeNumber(n: number): boolean {
-if (n <= 1) {
-        
-    return true;
-
-    }
 
         
     for (let i = 2; i < n; i++) {
@@ -30,7 +25,7 @@ if (n <= 1) {
  
 
 
-let num : number = 23;
+let num : number = 2;
 
 if  (primeNumber(num)=== true){
 
