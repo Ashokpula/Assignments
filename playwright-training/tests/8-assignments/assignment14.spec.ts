@@ -77,9 +77,13 @@ const sevicesPageLink = page.locator('//ul[@class="leftmenu"]//li//a[text()="Ser
   await sevicesPageLink.click();
   
 //15.wait for service page
-
-//Available Bookstore SOAP services:
+//16.Scroll down till bookstore services table
 
 await expect(page.locator('//span[text()="Available Bookstore SOAP services:"]')).toBeVisible();
+
+//17.get total rows of books store services table
+
+
+
 
 });
