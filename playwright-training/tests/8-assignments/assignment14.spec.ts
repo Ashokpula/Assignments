@@ -87,3 +87,10 @@ await expect(page.locator('//span[text()="Available Bookstore SOAP services:"]')
 
 
 });
+
+
+async function selectAccessMode(page: any, option: string): Promise<void> {
+    const gender = await page.locator(`input[value="${option}"]`);
+    await gender.click();
+    console.log(`Selected option from dba mode radio button is : ${option}`);
+}
