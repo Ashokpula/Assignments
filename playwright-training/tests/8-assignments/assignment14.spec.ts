@@ -77,12 +77,30 @@ const sevicesPageLink = page.locator('//ul[@class="leftmenu"]//li//a[text()="Ser
   await sevicesPageLink.click();
   
 //15.wait for service page
+const bookstoreServices = await page.locator('//span[text()="Bookstore services:"]');
+    await expect(bookstoreServices).toBeVisible();
+    console.log("Bookstore services section is visible. ");
 //16.Scroll down till bookstore services table
 
 await expect(page.locator('//span[text()="Available Bookstore SOAP services:"]')).toBeVisible();
+await bookstoreServices.scrollIntoViewIfNeeded();
 
-//17.get total rows of books store services table
+// 17.get total rows of books store services table
+    const rows = await page.locator('//span[text()="Bookstore services:"]/following-sibling::table[1]//tbody//tr');
+    const totalRows =await rows.count();
 
+    // 18.get total columns of books store services table
+    const columns = await page.locator('//span[text()="Bookstore services:"]/following-sibling::table[1]//tbody//tr[1]//td')
+    const totalColumns = await columns.count();
+   
+    // 19.Print table data (row wise and column wise data)
+    for(let r:number = 1; r<=totalRows ;r++){
+        for(let c:number=1; c<=totalColumns ;c++){
+            const cell = await page.locator(`//span[text()="Bookstore services:"]/following-sibling::table[1]//tbody//tr[${r}]//td[${c}]`);
+            const cellData = await cell.textContent();
+            console.log(`Row ${r} Column ${c} data is : ${cellData}`);
+        }
+    }
 
 
 
