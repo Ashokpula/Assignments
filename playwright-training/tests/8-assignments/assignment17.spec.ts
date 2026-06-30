@@ -9,11 +9,22 @@ await page.goto("https://demoqa.com/frames");
  console.log("Application is successfully launched. ");
 
 // 2. Locate Main window element
-// Locate the frame and store in the variable
-const mainFrameElement = page.frameLocator('//div[@id="frame1Wrapper"]');
-const frameElement = await mainFrameElement.locator('iframe#frame1');
+
+const mainWindowElement = await page.locator('//h1[@class="text-center"]');
+//Locate the frame and store in the variable
+const frame = await page.frameLocator('//iframe[@id="frame1"]');
 
 // 3. Locate Frame Element
+
+const frameElement = await frame.locator('//h1[@id="sampleHeading"]');
+
 // 4. Copy and Print text from frame element
+
+ console.log(await frameElement.textContent());
+
 // 5. Copy and Print text from main window element
+
+console.log(await mainWindowElement.textContent());
+
+
      });

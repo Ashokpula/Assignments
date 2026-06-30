@@ -15,20 +15,16 @@ test('assignment15', async ({ page }) => {
     console.log("Page is successfully Loaded. ");
 
    
-   //3.Enter First name and Last name
-
- 
+   //3.Enter First name and Last name 
 
   const firstName = page.locator("input#firstName");
-
   const firstNamePlaceHolder = await firstName.getAttribute("placeholder");
   await expect(firstNamePlaceHolder).toBe("First Name");
   await firstName.clear();
   await firstName.fill("Ashok");
    console.log("First name is entered Successfully ");
 
-   const lastName = page.locator("input#lastName");
-
+  const lastName = page.locator("input#lastName");
   const lastNamePlaceHolder = await lastName.getAttribute("placeholder");
   await expect(lastNamePlaceHolder).toBe("Last Name");
   await lastName.clear();
@@ -42,7 +38,7 @@ test('assignment15', async ({ page }) => {
   await expect(emailPlaceHolder).toBe("name@example.com");
   await email.clear();
   await email.fill("Pulaashok99@gmail.com");
-   console.log("Email is entered Successfully ");
+  console.log("Email is entered Successfully ");
 
    // 5. Select Gender (Male)
    
@@ -52,7 +48,6 @@ test('assignment15', async ({ page }) => {
   // 6. Enter mobile number
 
   const phone = page.locator("input#userNumber");
-
   const phonePlaceHolder = await phone.getAttribute("placeholder");
   await expect(phonePlaceHolder).toBe("Mobile Number");
   await phone.clear();
@@ -61,20 +56,20 @@ test('assignment15', async ({ page }) => {
 
 
   // 7.Select DOB (1-Feb-1991)
- const dob = await page.locator('//input[@id="dateOfBirthInput"]');
-  await dob.click();
+//  const dob = await page.locator('//input[@id="dateOfBirthInput"]');
+//   await dob.click();
   
-  const dobMonth = await page.locator('select.react-datepicker__month-select');
-  await dobMonth.selectOption({ value: '1'});
+//   const dobMonth = await page.locator('select.react-datepicker__month-select');
+//   await dobMonth.selectOption({ value: '1'});
 
-  const dobYear = await page.locator('select.react-datepicker__year-select');
-  await dobYear.selectOption({ value: '1991'});
-  const dobDate =  await page.locator('div.react-datepicker__day--001:not(div.react-datepicker__day--outside-month)');
-  await dobDate.click();
-  const enteredDob = await page.locator('//input[@id="dateOfBirthInput"]').inputValue();
-  await expect(enteredDob).toBe("01 Feb 1991");
+//   const dobYear = await page.locator('select.react-datepicker__year-select');
+//   await dobYear.selectOption({ value: '1991'});
+//   const dobDate =  await page.locator('div.react-datepicker__day--001:not(div.react-datepicker__day--outside-month)');
+//   await dobDate.click();
+   const enteredDob = await page.locator('//input[@id="dateOfBirthInput"]').inputValue();
+   await expect(enteredDob).toBe("01 Feb 1991");
 
- //await selectDob(page, 1, 1991, 001, "01 Feb 1991");
+   await selectDob(page, 1, 1991, 1, "01 Feb 1991");
    console.log(`"${enteredDob}} is entered Successfully "`);
 
  //8.Search and Select Computer Science and English
@@ -119,26 +114,26 @@ async function selectGender(page: any, option: string): Promise<void> {
     console.log(`Selected option from dba mode radio button is : ${option}`);
 }
 
-// async function selectDob(page: any, month: number, year : number, date : number, value : any ): Promise<void> {
+async function selectDob(page: any, month: number, year : number, date : number, value : any ): Promise<void> {
 
-//   const dobMonth = await page.locator('select.react-datepicker__month-select');
-//   await dobMonth.selectOption(`{value: ${month}}`);
-//  //await dobMonth.selectOption({ value: '5'});
-//   //console.log(dobMonth);
-//   const dobYear = await page.locator('select.react-datepicker__year-select');   
-//   await dobYear.selectOption(`{value : ${year}}`);
+  const dobMonth = await page.locator('select.react-datepicker__month-select');
+  await dobMonth.selectOption(`{value: ${month}}`);
+  //await dobMonth.selectOption({ value: '5'});
+  console.log(dobMonth);
+  const dobYear = await page.locator('select.react-datepicker__year-select');   
+  await dobYear.selectOption(`{value : ${year}}`);
     
-//   //const dobDate = await page.locator(`input[value='${date}']`);
+  //const dobDate = await page.locator(`input[value='${date}']`);
 
 
-// const dobDate =  await page.locator(`'div.react-datepicker__day--${date}:not(div.react-datepicker__day--outside-month)'`);
-// await dobDate.click();
-// const enteredDob = await page.locator('//input[@id="dateOfBirthInput"]').inputValue();
-// await expect(enteredDob).toBe(`"${value}"`);
+const dobDate =  await page.locator(`'div.react-datepicker__day--${date}:not(div.react-datepicker__day--outside-month)'`);
+await dobDate.click();
+const enteredDob = await page.locator('//input[@id="dateOfBirthInput"]').inputValue();
+await expect(enteredDob).toBe(`"${value}"`);
 
 
- // console.log(`Selected option from dba mode radio button is : ${date}+-+${month}+-+${year}`);
-//}
+ console.log(`Selected option from dba mode radio button is : ${date}+-+${month}+-+${year}`);
+}
 
 async function selectHobbies(page: any, option: string): Promise<void> {
     const hobbiesCheckBox = await page.locator(`//label[text()='${option}']/..//input[@type='checkbox']`);
