@@ -93,7 +93,7 @@ test('assignment15', async ({ page }) => {
 
   //10.Upload photo
 
-  const imageInput = await page.locator('input[type="file"]')
+  const imageInput = await page.locator('input[type="file"]');
   await imageInput.setInputFiles('C:/Ashok_Phone/tsscript.png');
   await expect(imageInput).toBeVisible();
   console.log(`"Photo is uploaded Successfully "`);
@@ -109,7 +109,7 @@ test('assignment15', async ({ page }) => {
 
   const successMessage = await page.locator("div#example-modal-sizes-title-lg").textContent();
   await expect(successMessage).toBe('Thanks for submitting the form');
-  
+
 });
 
 
