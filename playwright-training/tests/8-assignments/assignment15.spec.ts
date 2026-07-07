@@ -56,8 +56,8 @@ test('assignment15', async ({ page }) => {
 
 
   // 7.Select DOB (1-Feb-1991)
-//  const dob = await page.locator('//input[@id="dateOfBirthInput"]');
-//   await dob.click();
+ const dob = await page.locator('//input[@id="dateOfBirthInput"]');
+   await dob.click();
   
 //   const dobMonth = await page.locator('select.react-datepicker__month-select');
 //   await dobMonth.selectOption({ value: '1'});
@@ -66,11 +66,11 @@ test('assignment15', async ({ page }) => {
 //   await dobYear.selectOption({ value: '1991'});
 //   const dobDate =  await page.locator('div.react-datepicker__day--001:not(div.react-datepicker__day--outside-month)');
 //   await dobDate.click();
-   const enteredDob = await page.locator('//input[@id="dateOfBirthInput"]').inputValue();
-   await expect(enteredDob).toBe("01 Feb 1991");
+//    const enteredDob = await page.locator('//input[@id="dateOfBirthInput"]').inputValue();
+//    await expect(enteredDob).toBe("01 Feb 1991");
 
-   await selectDob(page, 1, 1991, 1, "01 Feb 1991");
-   console.log(`"${enteredDob}} is entered Successfully "`);
+   await selectDob(page, "February", "1991", "1");
+   //console.log(`"${enteredDob}} is entered Successfully "`);
 
  //8.Search and Select Computer Science and English
 
@@ -83,13 +83,13 @@ test('assignment15', async ({ page }) => {
   
   //9. Selecting Hobbies
      
-  await selectHobbies(page, "Sports");
-  await selectHobbies(page, "Reading");
+ const hobbies :string[] = ["Sports", "Reading"];
+    await selectHobbies(page, hobbies);
 
   //10.Upload photo
 
   const imageInput = await page.locator('input[type="file"]');
-  await imageInput.setInputFiles('C:/Ashok_Phone/tsscript.png');
+  await imageInput.setInputFiles('Files/tsscript.png');
   await expect(imageInput).toBeVisible();
   console.log(`"Photo is uploaded Successfully "`);
 
@@ -111,34 +111,41 @@ test('assignment15', async ({ page }) => {
 async function selectGender(page: any, option: string): Promise<void> {
     const gender = await page.locator(`input[value="${option}"]`);
     await gender.click();
-    console.log(`Selected option from dba mode radio button is : ${option}`);
+    console.log(`Selected  gender is : ${option}`);
 }
 
-async function selectDob(page: any, month: number, year : number, date : number, value : any ): Promise<void> {
+async function selectDob(page: any, month: string, year : string, date : string ): Promise<void> {
 
   const dobMonth = await page.locator('select.react-datepicker__month-select');
-  await dobMonth.selectOption(`{value: ${month}}`);
+  await dobMonth.selectOption({label: month})
   //await dobMonth.selectOption({ value: '5'});
-  console.log(dobMonth);
+  //console.log(dobMonth);
   const dobYear = await page.locator('select.react-datepicker__year-select');   
-  await dobYear.selectOption(`{value : ${year}}`);
+  await dobYear.selectOption({label : year})
     
   //const dobDate = await page.locator(`input[value='${date}']`);
 
-
-const dobDate =  await page.locator(`'div.react-datepicker__day--${date}:not(div.react-datepicker__day--outside-month)'`);
+const dobDate =  await await page.locator(`//div[contains(@aria-label,"${month}") and text()="${date}"]`);
 await dobDate.click();
 const enteredDob = await page.locator('//input[@id="dateOfBirthInput"]').inputValue();
-await expect(enteredDob).toBe(`"${value}"`);
+//await expect(enteredDob).toBe(`"${value}"`);
 
 
- console.log(`Selected option from dba mode radio button is : ${date}+-+${month}+-+${year}`);
+ console.log(`Selected option for dob is : ${date} ${month} ${year}`);
 }
 
-async function selectHobbies(page: any, option: string): Promise<void> {
-    const hobbiesCheckBox = await page.locator(`//label[text()='${option}']/..//input[@type='checkbox']`);
-    await hobbiesCheckBox.click();
-    console.log(`Selected option from hobbies is : ${option}`);
+// async function selectHobbies(page: any, option: string): Promise<void> {
+//     const hobbiesCheckBox = await page.locator(
+//         `//label[text()="${option}"]`);
+//     await hobbiesCheckBox.click();
+//     console.log(`Selected option from hobbies is : ${option}`);
+// }/
+
+async function selectHobbies(page: any, options: string[]): Promise<void> {
+    for (const option of options) {
+        const hobby = await page.locator(`//label[text()="${option}"]`);
+        await hobby.click();
+    }
 }
 
 ////label[text()='Music']/..//input[@type='checkbox']

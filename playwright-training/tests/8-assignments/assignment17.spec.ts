@@ -12,6 +12,7 @@ await page.goto("https://demoqa.com/frames");
 
 const mainWindowElement = await page.locator('//h1[text()="Frames"]');
 //Locate the frame and store in the variable
+
 const frame = await page.frameLocator('//iframe[@id="frame1"]');
 
 // 3. Locate Frame Element
