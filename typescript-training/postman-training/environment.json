@@ -1,0 +1,29 @@
+{
+	"id": "f7097f7f-d647-4f10-a798-5250301d3a0f",
+	"name": "Prod_GIT_Environment",
+	"values": [
+		{
+			"key": "BASE_URL",
+			"value": "https://api.github.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "OWNER",
+			"value": "PulaAshok93",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "TOKEN",
+			"value": "Bearer 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",
+			"type": "default",
+			"enabled": true,
+			"secret": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-07-14T18:25:39.193Z",
+	"_postman_exported_using": "Postman/12.12.0"
+}
