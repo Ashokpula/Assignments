@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@types/pg": "^8.20.0",
+    "pdf-parse": "^2.4.5",
+    "pdf-parse-new": "^2.1.0",
+    "pg": "^8.22.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1"
+  },
+  "scripts": {},
+  "name": "playwright-tdd-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
